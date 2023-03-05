@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def leftRigthDifference(self, nums: List[int]) -> List[int]:
+        
+        l,r = [],[]
+        for i in range(len(nums)):   #Input: nums = [10,4,8,3]
+            if i == 0:
+                l.append(0)
+                r.append(0)
+            elif i == 1:
+                l.append(nums[0])
+                r.insert(0, nums[-1])
+            else:
+                l.append(sum(nums[:i]))
+                r.insert(0, sum(nums[-i:]))
+                
+        arr = []
+        for i in range(len(nums)):
+            arr.append(abs(l[i]-r[i]))
+            
+        return arr                  # Output: [15,1,11,22]
+    """
+Explanation: The array leftSum is [0,10,14,22] and the array rightSum is [15,11,3,0].
+The array answer is [|0 - 15|,|10 - 11|,|14 - 3|,|22 - 0|] = [15,1,11,22]."""
