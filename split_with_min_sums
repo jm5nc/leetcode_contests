@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def splitNum(self, num: int) -> int:
+        digits = [int(i) for i in str(num)]
+        digits.sort()
+        out1, out2 = "",""
+        for i in range(0,len(digits),2):
+            out1 += str(digits[i])
+            if i + 1 < len(digits):
+                out2 += str(digits[i+1])
+        if out2 == "":
+            out2 = 0    
+        ans = int(out1) + int(out2)
+        return ans    
