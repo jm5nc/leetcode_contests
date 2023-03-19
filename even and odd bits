@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def evenOddBit(self, n: int) -> List[int]:
+        
+        #get bin 1s 0s
+        b = bin(n)[2:]
+        
+        #counts  index of 1s 
+        even, odd = 0, 0 # that order
+        
+        b = b[::-1]
+        
+        for i in range(len(b)):
+            if b[i] == "1":
+                if i == "0":
+                    even += 1
+                elif i % 2 == 0:
+                    even += 1
+                else:
+                    odd += 1
+                
+        return [even, odd]
