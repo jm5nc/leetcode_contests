@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def distMoney(self, money: int, children: int) -> int:
+        
+        #min 1 dollar to all
+        # never 4 dollar to any
+        # how many can get 8?
+        # -1 if can't distribute according to rules
+        
+
+        if money < children:
+            return -1
+        if money == children*8:
+            return children
+        if money > children*8:
+            return children -1
+
+
+        count = 0
+        for _ in range(children):
+            money -= 1
+        
+        for i in range(children):
+            if money >= 7:
+                money -= 7
+                count += 1
+        #print('leftover:', money)
+        if children - count == 1 and money == 3:
+            return count - 1
+        return count
