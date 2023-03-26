@@ -1,0 +1,16 @@
+class Solution:
+    def kItemsWithMaximumSum(self, numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:
+        
+        count = 0
+        t1 = k - numOnes
+        if t1 <= 0:
+            count += k
+            return count
+        else:
+            count += numOnes
+            
+        t2 = t1 - numZeros
+        if t2 <= 0:
+            return count
+        
+        return count - t2
