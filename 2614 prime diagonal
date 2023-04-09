@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+class Solution:
+    def diagonalPrime(self, nums: List[List[int]]) -> int:
+        
+        def isPrime(num):
+            if num < 2: return False
+            if num < 4: return True
+            if num % 2 == 0 or num % 3 == 0: return False
+            for i in range(5,int(num**0.5+1),6):
+                if num % i == 0: return False
+            for i in range(7,int(num**0.5+1),6):
+                if num % i == 0: return False
+            return True
+        
+        rows,cols = len(nums), len(nums[0])
+        diags = min(rows,cols)
+        
+        best = 0
+        
+        for i in range(diags):
+            if isPrime(nums[i][i]) and nums[i][i] > best:
+                best = nums[i][i]
+            if isPrime(nums[i][(diags-1)-i]) and nums[i][(diags-1)-i] > best:
+                best = nums[i][(diags-1)-i]
+                
+        return best
+            
